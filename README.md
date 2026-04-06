@@ -1,16 +1,39 @@
-# React + Vite
+# DevPulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A GitHub developer activity dashboard built with React, Material UI, and the GitHub REST API.
 
-Currently, two official plugins are available:
+## Live Demo
+[Coming soon — Vercel link]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Search any GitHub user and view their profile, repositories, and language breakdown
+- Filter and sort repositories by language, stars, or last updated
+- Trending repositories page — most starred repos from the last 30 days
+- Save profiles locally — persists across sessions using localStorage
+- Live GitHub API rate limit indicator in the navbar
+- Loading skeletons and error handling throughout
 
-## React Compiler
+## Tech Stack
+- React 18 + Vite
+- Material UI (MUI) v5
+- React Router v6
+- Recharts
+- GitHub REST API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
+```bash
+git clone https://github.com/UdayKS28/devpulse.git
+cd devpulse
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+```
+src/
+├── api/          # GitHub API calls
+├── components/   # Reusable UI components
+├── hooks/        # Custom React hooks
+├── pages/        # Page-level components
+└── utils/        # Helper functions
+```
