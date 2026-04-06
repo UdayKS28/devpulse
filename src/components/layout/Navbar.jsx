@@ -1,10 +1,16 @@
-import { AppBar, Toolbar, Typography, Button, Box, Tooltip, LinearProgress } from '@mui/material'
-import { Link, useLocation } from 'react-router-dom'
+import { AppBar, Toolbar, Typography, Button, Box, Tooltip, LinearProgress, Menu, MenuItem, Avatar, IconButton } from '@mui/material'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import LogoutIcon from '@mui/icons-material/Logout'
+import { useState } from 'react'
 import { useRateLimit } from '../../hooks/useRateLimit'
+import { useAuth } from '../../context/AuthContext'
 
 export default function Navbar() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const { logout } = useAuth()
   const rateLimit = useRateLimit()
+  const [anchorEl, setAnchorEl] = useState(null)
 
   const links = [
     { to: '/', label: 'Search' },
@@ -14,6 +20,11 @@ export default function Navbar() {
   const used = rateLimit ? rateLimit.limit - rateLimit.remaining : 0
   const pct = rateLimit ? (rateLimit.remaining / rateLimit.limit) * 100 : 100
   const color = pct > 50 ? 'success' : pct > 20 ? 'warning' : 'error'
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   return (
     <AppBar position="sticky" elevation={0} sx={{
@@ -55,7 +66,7 @@ export default function Navbar() {
           </Tooltip>
         )}
 
-        <Box display="flex" gap={1}>
+        <Box display="flex" gap={1} alignItems="center">
           {links.map(link => (
             <Button
               key={link.to}
@@ -68,6 +79,17 @@ export default function Navbar() {
               {link.label}
             </Button>
           ))}
+          
+          {/* Logout button */}
+          <Tooltip title="Logout">
+            <IconButton
+              size="small"
+              onClick={handleLogout}
+              sx={{ ml: 1 }}
+            >
+              <LogoutIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
         </Box>
       </Toolbar>
     </AppBar>
