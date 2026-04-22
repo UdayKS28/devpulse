@@ -1,0 +1,13 @@
+# Environment variables (VERY IMPORTANT)
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+myenv/
+venv/
+
+# IDE
+.vscode/
